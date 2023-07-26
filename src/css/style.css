@@ -14,8 +14,12 @@
     filter: blur(0);
   }
   to {
-    filter: blur(3px);
+    filter: blur(11px);
   }
+}
+
+.hidden {
+  display: none;
 }
 
 * {
@@ -91,6 +95,29 @@ form.start-game > input[type="submit"] {
   border: none;
 }
 
-.hidden {
-  display: none;
+#game-board {
+  width: 500px;
+  height: 500px;
+  margin: auto;
+  display: grid;
+  grid-template: repeat(3, 1fr) / repeat(3, 1fr);
+}
+
+canvas {
+  width: 100%;
+  height: 100%;
+  border-bottom: 5px solid #ffffff;
+  border-right: 5px solid #ffffff;
+}
+
+#b3,
+#b6,
+#b9 {
+  border-right: none;
+}
+
+#b7,
+#b8,
+#b9 {
+  border-bottom: none;
 }

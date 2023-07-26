@@ -1,12 +1,5 @@
 class GameView {
-  _parentElement = document.querySelector("body");
-  _modal = document.querySelector("dialog.start-game");
-
-  constructor() {}
-
-  toggleModal() {
-    this._modal.classList.toggle("hidden");
-  }
+  _parentElement = document.querySelector("#game");
 }
 
 export default new GameView();
