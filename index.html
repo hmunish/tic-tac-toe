@@ -7,6 +7,28 @@
     <script type="module" src="src/controller.js" defer></script>
   </head>
   <body>
-    <main id="app"></main>
+    <dialog class="start-game" open="">
+      <h3>Game Settings</h3>
+      <form class="start-game">
+        <input
+          type="text"
+          name="playerName"
+          placeholder="Player Name"
+          required
+        />
+        <select name="gameType" required>
+          <option value="1">Computer</option>
+          <option value="2">Player 2</option>
+        </select>
+        <input type="submit" value="Start" />
+      </form>
+    </dialog>
+    <main id="app">
+      <section id="game-details">
+        <p>Player 1</p>
+        <p>Computer</p>
+      </section>
+      <section id="game-board"></section>
+    </main>
   </body>
 </html>
