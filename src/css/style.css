@@ -18,8 +18,27 @@
   }
 }
 
+@keyframes removeDelayBlur {
+  from {
+    filter: blur(11px);
+  }
+  to {
+    filter: blur(0);
+  }
+}
+
 .hidden {
   display: none;
+}
+
+.delay-blur {
+  animation: delayBlur 1s;
+  animation-fill-mode: forwards;
+}
+
+.remove-delay-blur {
+  animation: removeDelayBlur 1s;
+  animation-fill-mode: forwards;
 }
 
 * {
@@ -38,8 +57,6 @@ body {
 main {
   width: 100vw;
   min-height: 100vh;
-  animation: delayBlur 1s;
-  animation-fill-mode: forwards;
 }
 
 dialog.start-game {

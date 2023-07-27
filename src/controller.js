@@ -6,5 +6,14 @@ import "./css/style.css";
 import GameView from "./Views/GameView";
 import AppView from "./Views/AppView";
 
-console.log(GameView);
-console.log(AppView);
+function handleModalSubmit(e) {
+  const data = [...new FormData(e.target)]; // storing form data
+  AppView.toggleModal(); // removing modal
+  GameView.toggleBlur.call(GameView); // removing blur effect
+}
+
+function init() {
+  AppView.addModalSubmitHandler(handleModalSubmit);
+}
+
+init();
