@@ -23,8 +23,10 @@ function handleModalSubmit(e) {
 }
 
 function handleBoardDraw(e) {
-  console.log(e.target.dataset);
   if (e.target.dataset.used) return; // check if box is available to draw if not return
+
+  const boxNo = Number(e.target.dataset.no);
+  model.addAction(boxNo);
 
   // draw x if turn is x else 0
   if (model.switchTurn() === "x") {
@@ -34,6 +36,9 @@ function handleBoardDraw(e) {
   }
 
   e.target.setAttribute("data-used", true); // mark the clicked box as used
+
+  if (model.getWinStatus()) console.log("Won");
+  if (model.getGameStatus() === "draw") console.log("Draw");
 }
 
 function init() {
