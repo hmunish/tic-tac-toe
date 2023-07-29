@@ -12,6 +12,20 @@ const state = {
   },
 };
 
+export const startGame = function (name1, name2) {
+  state.gamePlay = {
+    player1Name: name1,
+    player2Name: name2,
+    gameType: name2 === "computer" ? 1 : 2,
+    play1: [],
+    play2: [],
+    game: [],
+    gameStatus: "running",
+    playerWon: null,
+    turn: "x",
+  };
+};
+
 export const switchTurn = function () {
   const returnVal = state.gamePlay.turn;
   state.gamePlay.turn = state.gamePlay.turn === "x" ? "0" : "x";
@@ -99,11 +113,15 @@ const calculateLogic = function (arr) {
 
 export const checkWin = function () {
   if (state.gamePlay.turn === "x" && state.gamePlay.play1.length >= 3) {
-    if (calculateLogic(state.gamePlay.play1))
+    if (calculateLogic(state.gamePlay.play1)) {
       state.gamePlay.playerWon = state.gamePlay.player1Name;
+      state.gamePlay.gameStatus = "won";
+    }
   } else if (state.gamePlay.turn === "0" && state.gamePlay.play2.length >= 3) {
-    if (calculateLogic(state.gamePlay.play2))
+    if (calculateLogic(state.gamePlay.play2)) {
       state.gamePlay.playerWon = state.gamePlay.player2Name;
+      state.gamePlay.gameStatus = "won";
+    }
   }
 };
 
@@ -116,18 +134,6 @@ export const addAction = function (i) {
   state.gamePlay.game.push(i);
   checkWin();
   checkDraw();
-};
 
-export const startGame = function (name1, name2) {
-  state.gamePlay = {
-    player1Name: name1,
-    player2Name: name2,
-    gameType: name2 === "computer" ? 1 : 2,
-    play1: [],
-    play2: [],
-    game: [],
-    gameStatus: "running",
-    playerWon: null,
-    turn: "x",
-  };
+  console.log(state.gamePlay);
 };
