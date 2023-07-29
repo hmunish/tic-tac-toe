@@ -29,6 +29,17 @@ export const startGame = function (
   };
 };
 
+export const switchPlayers = function () {
+  const tmp = state.gamePlay.player1Name;
+  state.gamePlay.player1Name = state.gamePlay.player2Name;
+  state.gamePlay.player2Name = tmp;
+
+  return {
+    name1: state.gamePlay.player1Name,
+    name2: state.gamePlay.player2Name,
+  };
+};
+
 export const switchTurn = function () {
   const returnVal = state.gamePlay.turn;
   state.gamePlay.turn = state.gamePlay.turn === "x" ? "0" : "x";
