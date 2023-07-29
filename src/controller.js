@@ -19,6 +19,8 @@ function handleModalSubmit(e) {
   AppView.toggleModal(); // removing modal
   GameView.toggleBlur(); // removing blur effect
   model.startGame(name1, name2); // setting model state for new game
+  if (model.getGameType() === 1 && model.getPlayer1Name() === "computer")
+    BoardView.triggerComputerClick(model.getComputerMoveIndex());
   GameView.setPlayersName(name1, name2);
 }
 
@@ -60,6 +62,9 @@ function tryAgainHandler() {
   GameView.toggleBlur();
   AppView.toggleTryAgainModal("");
   GameView.setGameStatus("<<< Turn X");
+  if (model.getGameType() === 1 && model.getPlayer1Name() === "computer") {
+    BoardView.triggerComputerClick(model.getComputerMoveIndex());
+  }
 }
 
 function init() {

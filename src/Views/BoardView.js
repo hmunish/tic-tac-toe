@@ -7,8 +7,8 @@ class BoardView {
     this._parentElement.addEventListener("click", handler);
   }
 
-  getComuterMoveElement(ind) {
-    return this._parentElement.querySelector(`[data-no='${ind}']`);
+  triggerComputerClick(ind) {
+    this._parentElement.querySelector(`[data-no='${ind}']`).click();
   }
 
   drawX(ele) {

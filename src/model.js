@@ -56,7 +56,7 @@ export const getComputerMoveIndex = function () {
     for (a of allPossibleCombinations) {
       let count = 0;
       for (b of a) {
-        if (state.gamePlay.play1.includes(b)) count++;
+        if (state.gamePlay.play2.includes(b)) count++;
       }
       if (count === 2) {
         for (b of a) {
