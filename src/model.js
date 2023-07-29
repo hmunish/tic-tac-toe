@@ -12,7 +12,10 @@ const state = {
   },
 };
 
-export const startGame = function (name1, name2) {
+export const startGame = function (
+  name1 = state.gamePlay.player1Name,
+  name2 = state.gamePlay.player2Name
+) {
   state.gamePlay = {
     player1Name: name1,
     player2Name: name2,

@@ -42,15 +42,27 @@ function handleBoardDraw(e) {
 
   if (model.getWinStatus()) {
     GameView.setGameStatus(`${model.getWinStatus()} won`);
+    GameView.toggleBlur();
+    AppView.toggleTryAgainModal(`${model.getWinStatus()} won, Try again`);
   }
   if (model.getGameStatus() === "draw") {
     GameView.setGameStatus("Game Draw");
+    GameView.toggleBlur();
+    AppView.toggleTryAgainModal("Game Draw, Try again");
   }
+}
+
+function tryAgainHandler() {
+  model.startGame();
+  BoardView.drawGameBoard();
+  GameView.toggleBlur();
+  AppView.toggleTryAgainModal("");
 }
 
 function init() {
   AppView.addModalSubmitHandler(handleModalSubmit);
   BoardView.addDrawClickHandler(handleBoardDraw);
+  AppView.addTryAgainClickHandler(tryAgainHandler);
 }
 
 init();
