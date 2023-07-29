@@ -19,7 +19,7 @@ export const startGame = function (
   state.gamePlay = {
     player1Name: name1,
     player2Name: name2,
-    gameType: name2 === "computer" ? 1 : 2,
+    gameType: name1 === "computer" || name2 === "computer" ? 1 : 2,
     play1: [],
     play2: [],
     game: [],
@@ -27,6 +27,66 @@ export const startGame = function (
     playerWon: null,
     turn: "x",
   };
+};
+
+export const getPlayer1Name = function () {
+  return state.gamePlay.player1Name;
+};
+export const getPlayer2Name = function () {
+  return state.gamePlay.player2Name;
+};
+
+export const getGameType = function () {
+  return state.gamePlay.gameType;
+};
+
+export const getComputerMoveIndex = function () {
+  const allPossibleCombinations = [
+    [1, 2, 3],
+    [4, 5, 6],
+    [7, 8, 9],
+    [1, 4, 7],
+    [2, 5, 8],
+    [3, 6, 9],
+    [1, 5, 9],
+    [3, 5, 7],
+  ];
+
+  if (state.gamePlay.player1Name === "computer") {
+    for (a of allPossibleCombinations) {
+      let count = 0;
+      for (b of a) {
+        if (state.gamePlay.play1.includes(b)) count++;
+      }
+      if (count === 2) {
+        for (b of a) {
+          if (!state.gamePlay.game.includes(b)) return b;
+        }
+      }
+    }
+    for (a of allPossibleCombinations) {
+      for (b of a) {
+        if (!state.gamePlay.game.includes(b)) return b;
+      }
+    }
+  } else if (state.gamePlay.player2Name === "computer") {
+    for (a of allPossibleCombinations) {
+      let count = 0;
+      for (b of a) {
+        if (state.gamePlay.play1.includes(b)) count++;
+      }
+      if (count === 2) {
+        for (b of a) {
+          if (!state.gamePlay.game.includes(b)) return b;
+        }
+      }
+    }
+    for (a of allPossibleCombinations) {
+      for (b of a) {
+        if (!state.gamePlay.game.includes(b)) return b;
+      }
+    }
+  }
 };
 
 export const switchPlayers = function () {
