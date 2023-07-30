@@ -21,7 +21,10 @@ function handleModalSubmit(e) {
   model.startGame(name1, name2); // setting model state for new game
   if (model.getGameType() === 1 && model.getPlayer1Name() === "computer")
     BoardView.triggerComputerClick(model.getComputerMoveIndex());
-  GameView.setPlayersName(name1, name2);
+  GameView.setPlayersName(
+    `${name1}: ${model.getPlayer1Score()}`,
+    `${name2}: ${model.getPlayer2Score()}`
+  );
 }
 
 function handleBoardDraw(e) {
@@ -40,7 +43,10 @@ function handleBoardDraw(e) {
       model.getPlayer2Name() === "computer" &&
       model.getWinStatus() === null
     ) {
+      AppView.toggleSpinner();
+      GameView.setGameStatus("Computer is thinking");
       setTimeout(() => {
+        AppView.toggleSpinner();
         BoardView.triggerComputerClick(model.getComputerMoveIndex());
       }, 1000);
     }
@@ -51,8 +57,10 @@ function handleBoardDraw(e) {
       model.getPlayer1Name() === "computer" &&
       model.getWinStatus() === null
     ) {
+      AppView.toggleSpinner();
       setTimeout(() => {
         BoardView.triggerComputerClick(model.getComputerMoveIndex());
+        AppView.toggleSpinner();
       }, 1000);
     }
   }
@@ -74,7 +82,10 @@ function handleBoardDraw(e) {
 function tryAgainHandler() {
   model.startGame();
   const newNames = model.switchPlayers();
-  GameView.setPlayersName(newNames.name1, newNames.name2);
+  GameView.setPlayersName(
+    `${newNames.name1}: ${model.getPlayer1Score()}`,
+    `${newNames.name2}: ${model.getPlayer2Score()}`
+  );
   BoardView.drawGameBoard();
   GameView.toggleBlur();
   AppView.toggleTryAgainModal("");

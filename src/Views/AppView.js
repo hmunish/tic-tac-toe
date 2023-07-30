@@ -4,6 +4,7 @@ class AppView {
   _tryAgain = document.querySelector(".try-again-game");
   _tryAgainIcon = document.querySelector("#try-again-icon");
   _tryAgainMessage = document.querySelector(".try-again-game > h3");
+  _spinner = document.querySelector("#spinner-wrapper");
 
   toggleModal() {
     this._modal.classList.toggle("hidden");
@@ -29,7 +30,9 @@ class AppView {
     this._tryAgainIcon.addEventListener("click", handler);
   }
 
-  toggleSpinner() {}
+  toggleSpinner() {
+    this._spinner.classList.toggle("hidden");
+  }
 }
 
 export default new AppView();

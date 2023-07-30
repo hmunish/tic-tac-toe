@@ -10,6 +10,23 @@ const state = {
     playerWon: null,
     turn: "x",
   },
+  scores: {
+    player1: 0,
+    player2: 0,
+    draw: 0,
+  },
+};
+
+export const getDrawScore = function () {
+  return state.scores.draw;
+};
+
+export const getPlayer1Score = function () {
+  return state.scores.player1;
+};
+
+export const getPlayer2Score = function () {
+  return state.scores.player2;
 };
 
 export const startGame = function (
@@ -90,9 +107,16 @@ export const getComputerMoveIndex = function () {
 };
 
 export const switchPlayers = function () {
-  const tmp = state.gamePlay.player1Name;
+  let tmp = state.gamePlay.player1Name;
   state.gamePlay.player1Name = state.gamePlay.player2Name;
   state.gamePlay.player2Name = tmp;
+
+  tmp = state.scores.player1;
+  state.scores = {
+    player1: state.scores.player2,
+    player2: tmp,
+    draw: state.scores.draw,
+  };
 
   return {
     name1: state.gamePlay.player1Name,
@@ -117,6 +141,7 @@ export const getGameStatus = function () {
 export const checkDraw = function () {
   if (state.gamePlay.playerWon === null && state.gamePlay.game.length === 9) {
     state.gamePlay.gameStatus = "draw";
+    state.scores.draw += 1;
   }
 };
 
@@ -190,11 +215,13 @@ export const checkWin = function () {
     if (calculateLogic(state.gamePlay.play1)) {
       state.gamePlay.playerWon = state.gamePlay.player1Name;
       state.gamePlay.gameStatus = "won";
+      state.scores.player1 += 1;
     }
   } else if (state.gamePlay.turn === "0" && state.gamePlay.play2.length >= 3) {
     if (calculateLogic(state.gamePlay.play2)) {
       state.gamePlay.playerWon = state.gamePlay.player2Name;
       state.gamePlay.gameStatus = "won";
+      state.scores.player2 += 1;
     }
   }
 };
@@ -208,6 +235,4 @@ export const addAction = function (i) {
   state.gamePlay.game.push(i);
   checkWin();
   checkDraw();
-
-  console.log(state.gamePlay);
 };
