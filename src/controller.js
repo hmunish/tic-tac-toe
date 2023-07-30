@@ -25,7 +25,8 @@ function handleModalSubmit(e) {
 }
 
 function handleBoardDraw(e) {
-  if (model.getGameStatus() !== "running") return; // check if game is started
+  if (model.getGameStatus() !== "running" || model.getWinStatus() !== null)
+    return; // check if game is started
   if (e.target.dataset.used) return; // check if box is available to draw if not return
 
   const boxNo = Number(e.target.dataset.no);
@@ -35,9 +36,25 @@ function handleBoardDraw(e) {
   if (model.switchTurn() === "x") {
     BoardView.drawX(e.target);
     GameView.setGameStatus("TURN 0 >>>");
+    if (
+      model.getPlayer2Name() === "computer" &&
+      model.getWinStatus() === null
+    ) {
+      setTimeout(() => {
+        BoardView.triggerComputerClick(model.getComputerMoveIndex());
+      }, 1000);
+    }
   } else {
     BoardView.draw0(e.target);
     GameView.setGameStatus("<<< TURN X");
+    if (
+      model.getPlayer1Name() === "computer" &&
+      model.getWinStatus() === null
+    ) {
+      setTimeout(() => {
+        BoardView.triggerComputerClick(model.getComputerMoveIndex());
+      }, 1000);
+    }
   }
 
   e.target.setAttribute("data-used", true); // mark the clicked box as used

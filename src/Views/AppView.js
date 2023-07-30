@@ -28,6 +28,8 @@ class AppView {
   addTryAgainClickHandler(handler) {
     this._tryAgainIcon.addEventListener("click", handler);
   }
+
+  toggleSpinner() {}
 }
 
 export default new AppView();

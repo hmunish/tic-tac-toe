@@ -8,6 +8,7 @@ class BoardView {
   }
 
   triggerComputerClick(ind) {
+    if (!ind) return;
     this._parentElement.querySelector(`[data-no='${ind}']`).click();
   }
 
