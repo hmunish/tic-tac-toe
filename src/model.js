@@ -73,6 +73,17 @@ export const getComputerMoveIndex = function () {
     for (a of allPossibleCombinations) {
       let count = 0;
       for (b of a) {
+        if (state.gamePlay.play1.includes(b)) count++;
+      }
+      if (count === 2) {
+        for (b of a) {
+          if (!state.gamePlay.game.includes(b)) return b;
+        }
+      }
+    }
+    for (a of allPossibleCombinations) {
+      let count = 0;
+      for (b of a) {
         if (state.gamePlay.play2.includes(b)) count++;
       }
       if (count === 2) {
@@ -87,6 +98,17 @@ export const getComputerMoveIndex = function () {
       }
     }
   } else if (state.gamePlay.player2Name === "computer") {
+    for (a of allPossibleCombinations) {
+      let count = 0;
+      for (b of a) {
+        if (state.gamePlay.play2.includes(b)) count++;
+      }
+      if (count === 2) {
+        for (b of a) {
+          if (!state.gamePlay.game.includes(b)) return b;
+        }
+      }
+    }
     for (a of allPossibleCombinations) {
       let count = 0;
       for (b of a) {
