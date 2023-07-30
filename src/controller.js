@@ -38,7 +38,7 @@ function handleBoardDraw(e) {
   // draw x if turn is x else 0
   if (model.switchTurn() === "x") {
     BoardView.drawX(e.target);
-    GameView.setGameStatus("TURN 0 >>>");
+    GameView.setGameStatus("TURN 0 &rarr;");
     if (
       model.getPlayer2Name() === "computer" &&
       model.getWinStatus() === null
@@ -52,12 +52,13 @@ function handleBoardDraw(e) {
     }
   } else {
     BoardView.draw0(e.target);
-    GameView.setGameStatus("<<< TURN X");
+    GameView.setGameStatus("&larr; TURN X");
     if (
       model.getPlayer1Name() === "computer" &&
       model.getWinStatus() === null
     ) {
       AppView.toggleSpinner();
+      GameView.setGameStatus("Computer is thinking");
       setTimeout(() => {
         BoardView.triggerComputerClick(model.getComputerMoveIndex());
         AppView.toggleSpinner();
@@ -89,7 +90,7 @@ function tryAgainHandler() {
   BoardView.drawGameBoard();
   GameView.toggleBlur();
   AppView.toggleTryAgainModal("");
-  GameView.setGameStatus("<<< Turn X");
+  GameView.setGameStatus("&larr; Turn X");
   if (model.getGameType() === 1 && model.getPlayer1Name() === "computer") {
     BoardView.triggerComputerClick(model.getComputerMoveIndex());
   }

@@ -15,7 +15,7 @@ class GameView {
   }
 
   setGameStatus(status) {
-    this._gameStatusElement.textContent = status;
+    this._gameStatusElement.innerHTML = status;
   }
 }
 
