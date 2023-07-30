@@ -3,8 +3,57 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-    <script src="src/controller.js" defer></script>
+    <title>Tic Tac Toe</title>
+    <script type="module" src="src/controller.js" defer></script>
   </head>
-  <body></body>
+  <body>
+    <dialog class="start-game" open="">
+      <h3>Game Settings</h3>
+      <form class="start-game">
+        <input
+          type="text"
+          name="playerName"
+          placeholder="Player Name"
+          required
+        />
+        <input
+          type="text"
+          name="player2Name"
+          placeholder="Player 2 Name"
+          id="player-2-name"
+          class="hidden"
+        />
+        <select name="gameType" required id="select-game-type">
+          <option value="computer">Computer</option>
+          <option value="player2">Player 2</option>
+        </select>
+        <input type="submit" value="Start" />
+      </form>
+    </dialog>
+    <dialog class="try-again-game hidden" open="">
+      <h3>Try again</h3>
+      <img src="./try-again.svg" id="try-again-icon" />
+    </dialog>
+    <div id="spinner-wrapper" class="hidden">
+      <div id="spinner"></div>
+    </div>
+    <main id="game" class="delay-blur">
+      <section id="game-details">
+        <p id="player1">Player 1</p>
+        <p id="game-status">&larr; Turn X</p>
+        <p id="player2">Computer</p>
+      </section>
+      <section id="game-board">
+        <canvas id="b1" data-no="1"></canvas>
+        <canvas id="b2" data-no="2"></canvas>
+        <canvas id="b3" data-no="3"></canvas>
+        <canvas id="b4" data-no="4"></canvas>
+        <canvas id="b5" data-no="5"></canvas>
+        <canvas id="b6" data-no="6"></canvas>
+        <canvas id="b7" data-no="7"></canvas>
+        <canvas id="b8" data-no="8"></canvas>
+        <canvas id="b9" data-no="9"></canvas>
+      </section>
+    </main>
+  </body>
 </html>
