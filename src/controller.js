@@ -15,7 +15,7 @@ if (module.hot) {
 function handleModalSubmit(e) {
   const data = [...new FormData(e.target)]; // storing form data
   const name1 = data[0][1],
-    name2 = data[1][1]; // storing players name
+    name2 = data[1][1] || data[2][1]; // storing players name
   AppView.toggleModal(); // removing modal
   GameView.toggleBlur(); // removing blur effect
   model.startGame(name1, name2); // setting model state for new game
@@ -98,6 +98,7 @@ function tryAgainHandler() {
 
 function init() {
   AppView.addModalSubmitHandler(handleModalSubmit);
+  AppView.addGameTypeSelectChangeHandler(() => {});
   BoardView.addDrawClickHandler(handleBoardDraw);
   AppView.addTryAgainClickHandler(tryAgainHandler);
 }

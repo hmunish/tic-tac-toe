@@ -1,6 +1,8 @@
 class AppView {
   _parentElement = document.querySelector("body");
   _modal = document.querySelector("dialog.start-game");
+  _player2FormInput = document.querySelector("#player-2-name");
+  _gameTypeSelect = document.querySelector("#select-game-type");
   _tryAgain = document.querySelector(".try-again-game");
   _tryAgainIcon = document.querySelector("#try-again-icon");
   _tryAgainMessage = document.querySelector(".try-again-game > h3");
@@ -23,6 +25,18 @@ class AppView {
     this._modal.addEventListener("submit", (e) => {
       e.preventDefault();
       handler(e);
+    });
+  }
+
+  addGameTypeSelectChangeHandler(handler) {
+    this._gameTypeSelect.addEventListener("change", (e) => {
+      if (e.target.value === "player2") {
+        this._player2FormInput.classList.remove("hidden");
+        this._player2FormInput.setAttribute("required", "");
+      } else {
+        this._player2FormInput.classList.add("hidden");
+        this._player2FormInput.removeAttribute("required");
+      }
     });
   }
 
