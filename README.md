@@ -1,33 +1,5 @@
 <a name="readme-top"></a>
 
-<!--
-!!! IMPORTANT !!!
-This README is an example of how you could professionally present your codebase.
-Writing documentation is a crucial part of your work as a professional software developer and cannot be ignored.
-
-You should modify this file to match your project and remove sections that don't apply.
-
-REQUIRED SECTIONS:
-- Table of Contents
-- About the Project
-  - Built With
-  - Live Demo
-- Getting Started
-- Authors
-- Future Features
-- Contributing
-- Show your support
-- Acknowledgements
-- License
-
-OPTIONAL SECTIONS:
-- FAQ
-
-After you're finished please remove all the comments and instructions!
-
-For more information on the importance of a professional README for your repositories: https://github.com/microverseinc/curriculum-transversal-skills/blob/main/documentation/articles/readme_best_practices.md
--->
-
 <div align="center">
   <!-- Logo here-->
   <!-- <img src="" alt="logo" width="140"  height="auto" /> -->
@@ -179,9 +151,9 @@ Example:
 
 ## 🔭 Future Features <a name="future-features"></a>
 
-- [ ] **[Hard_mode_for_vs_computer_game_type]**
+- [ ] **[Hard_Mode_For_vs_Computer_Game_type]**
+- [ ] **[Button_To_Start_New_Game]**
 - [ ] **[Animations]**
-- [ ] **[Better_design]**
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -191,7 +163,7 @@ Example:
 
 Contributions, issues, and feature requests are welcome!
 
-Feel free to check the [issues page](../../issues/).
+Feel free to check the [issues page](https://github.com/hmunish/tic-tac-toe/issues).
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
