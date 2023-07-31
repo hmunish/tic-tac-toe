@@ -1,8 +1,6 @@
 class BoardView {
   _parentElement = document.querySelector("#game-board");
 
-  constructor() {}
-
   addDrawClickHandler(handler) {
     this._parentElement.addEventListener("click", handler);
   }
@@ -12,6 +10,7 @@ class BoardView {
     this._parentElement.querySelector(`[data-no='${ind}']`).click();
   }
 
+  // This method will draw X on the passed element
   drawX(ele) {
     const ctx = ele.getContext("2d");
     ctx.beginPath();
@@ -24,6 +23,7 @@ class BoardView {
     ctx.stroke();
   }
 
+  // This method will draw 0 on the passed element
   draw0(ele) {
     const ctx = ele.getContext("2d");
     ctx.beginPath();

@@ -17,6 +17,7 @@ const state = {
   },
 };
 
+//////////// GETTERS \\\\\\\\\\\\\\\\\\
 export const getDrawScore = function () {
   return state.scores.draw;
 };
@@ -29,6 +30,28 @@ export const getPlayer2Score = function () {
   return state.scores.player2;
 };
 
+export const getPlayer1Name = function () {
+  return state.gamePlay.player1Name;
+};
+export const getPlayer2Name = function () {
+  return state.gamePlay.player2Name;
+};
+
+export const getGameType = function () {
+  return state.gamePlay.gameType;
+};
+
+export const getWinStatus = function () {
+  return state.gamePlay.playerWon;
+};
+
+export const getGameStatus = function () {
+  return state.gamePlay.gameStatus;
+};
+
+//////////// GETTERS \\\\\\\\\\\\\\\\\\
+
+// Function to set the state for a new game
 export const startGame = function (
   name1 = state.gamePlay.player1Name,
   name2 = state.gamePlay.player2Name
@@ -46,17 +69,7 @@ export const startGame = function (
   };
 };
 
-export const getPlayer1Name = function () {
-  return state.gamePlay.player1Name;
-};
-export const getPlayer2Name = function () {
-  return state.gamePlay.player2Name;
-};
-
-export const getGameType = function () {
-  return state.gamePlay.gameType;
-};
-
+// Function to calculate computer's move
 export const getComputerMoveIndex = function () {
   const allPossibleCombinations = [
     [1, 2, 3],
@@ -128,6 +141,7 @@ export const getComputerMoveIndex = function () {
   }
 };
 
+// Function to switch players
 export const switchPlayers = function () {
   let tmp = state.gamePlay.player1Name;
   state.gamePlay.player1Name = state.gamePlay.player2Name;
@@ -146,20 +160,14 @@ export const switchPlayers = function () {
   };
 };
 
+// Function to switch turns
 export const switchTurn = function () {
   const returnVal = state.gamePlay.turn;
   state.gamePlay.turn = state.gamePlay.turn === "x" ? "0" : "x";
   return returnVal;
 };
 
-export const getWinStatus = function () {
-  return state.gamePlay.playerWon;
-};
-
-export const getGameStatus = function () {
-  return state.gamePlay.gameStatus;
-};
-
+// Function to check if the game is a draw
 export const checkDraw = function () {
   if (state.gamePlay.playerWon === null && state.gamePlay.game.length === 9) {
     state.gamePlay.gameStatus = "draw";
@@ -167,6 +175,7 @@ export const checkDraw = function () {
   }
 };
 
+// Function to calculate if there is a win
 const calculateLogic = function (arr) {
   if (arr.length < 3 && arr.length > 5) return; // return if arr.length is not in range of 3-5
 
@@ -232,6 +241,7 @@ const calculateLogic = function (arr) {
   }
 };
 
+// Function to check if player has won the game
 export const checkWin = function () {
   if (state.gamePlay.turn === "x" && state.gamePlay.play1.length >= 3) {
     if (calculateLogic(state.gamePlay.play1)) {
@@ -248,6 +258,7 @@ export const checkWin = function () {
   }
 };
 
+// Function to record a move any players
 export const addAction = function (i) {
   if (state.gamePlay.turn === "x") {
     state.gamePlay.play1.push(i);

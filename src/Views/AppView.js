@@ -30,13 +30,7 @@ class AppView {
 
   addGameTypeSelectChangeHandler(handler) {
     this._gameTypeSelect.addEventListener("change", (e) => {
-      if (e.target.value === "player2") {
-        this._player2FormInput.classList.remove("hidden");
-        this._player2FormInput.setAttribute("required", "");
-      } else {
-        this._player2FormInput.classList.add("hidden");
-        this._player2FormInput.removeAttribute("required");
-      }
+      handler(e);
     });
   }
 
