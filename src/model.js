@@ -83,58 +83,58 @@ export const getComputerMoveIndex = function () {
   ];
 
   if (state.gamePlay.player1Name === "computer") {
-    for (a of allPossibleCombinations) {
+    for (let a of allPossibleCombinations) {
       let count = 0;
-      for (b of a) {
+      for (let b of a) {
         if (state.gamePlay.play1.includes(b)) count++;
       }
       if (count === 2) {
-        for (b of a) {
+        for (let b of a) {
           if (!state.gamePlay.game.includes(b)) return b;
         }
       }
     }
-    for (a of allPossibleCombinations) {
+    for (let a of allPossibleCombinations) {
       let count = 0;
-      for (b of a) {
+      for (let b of a) {
         if (state.gamePlay.play2.includes(b)) count++;
       }
       if (count === 2) {
-        for (b of a) {
+        for (let b of a) {
           if (!state.gamePlay.game.includes(b)) return b;
         }
       }
     }
-    for (a of allPossibleCombinations) {
-      for (b of a) {
+    for (let a of allPossibleCombinations) {
+      for (let b of a) {
         if (!state.gamePlay.game.includes(b)) return b;
       }
     }
   } else if (state.gamePlay.player2Name === "computer") {
-    for (a of allPossibleCombinations) {
+    for (let a of allPossibleCombinations) {
       let count = 0;
-      for (b of a) {
+      for (let b of a) {
         if (state.gamePlay.play2.includes(b)) count++;
       }
       if (count === 2) {
-        for (b of a) {
+        for (let b of a) {
           if (!state.gamePlay.game.includes(b)) return b;
         }
       }
     }
-    for (a of allPossibleCombinations) {
+    for (let a of allPossibleCombinations) {
       let count = 0;
-      for (b of a) {
+      for (let b of a) {
         if (state.gamePlay.play1.includes(b)) count++;
       }
       if (count === 2) {
-        for (b of a) {
+        for (let b of a) {
           if (!state.gamePlay.game.includes(b)) return b;
         }
       }
     }
-    for (a of allPossibleCombinations) {
-      for (b of a) {
+    for (let a of allPossibleCombinations) {
+      for (let b of a) {
         if (!state.gamePlay.game.includes(b)) return b;
       }
     }
@@ -225,12 +225,12 @@ const calculateLogic = function (arr) {
     ],
   ];
 
-  for (i of arr) {
+  for (let i of arr) {
     // looping incoming array
-    for (j of set[i]) {
+    for (let j of set[i]) {
       // looping set to check if required match is available
       let isMatch = false;
-      for (k of j) {
+      for (let k of j) {
         isMatch = arr.includes(k);
         if (!isMatch) break;
       }
